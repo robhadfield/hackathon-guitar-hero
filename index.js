@@ -26,6 +26,7 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname + '/public'));
 
 // upload single file
+// https://attacomsian.com/blog/uploading-files-nodejs-express
 app.post('/upload-music', async (req, res) => {
     try {
         if(!req.files) {
@@ -66,7 +67,7 @@ app.use('/', indexRouter);
 app.use(express.static('uploads'));
 
 //start app 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.listen(port, () => 
   console.log(`App is listening on port ${port}.`)

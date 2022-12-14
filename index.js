@@ -22,12 +22,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan('dev'));
 
-// view engine and routing setup
-const indexRouter = require('./routes/index');
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-app.use('/', indexRouter);
-
 // static files
 app.use(express.static(__dirname + '/public'));
 
@@ -61,6 +55,12 @@ app.post('/upload-music', async (req, res) => {
         res.status(500).send(err);
     }
 });
+
+// view engine and routing setup
+const indexRouter = require('./routes/index');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use('/', indexRouter);
 
 //make uploads directory static
 app.use(express.static('uploads'));

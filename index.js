@@ -1,10 +1,19 @@
-const express = require('express');
-const path = require('path');
-const fileUpload = require('express-fileupload');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const _ = require('lodash');
+import express from 'express';
+import path from 'path';
+import fs from 'fs';
+import fileUpload from 'express-fileupload';
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import { compare } from 'audio-compare';
+import _ from 'lodash';
+import { fileURLToPath } from 'url';
+//import indexRouter from './routes/index.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const uploadFolder = path.join(__dirname, 'public/uploads/');
 
 const app = express();
 
@@ -12,7 +21,7 @@ const app = express();
 app.use(fileUpload({
     createParentPath: true,
     limits: { 
-        fileSize: 2 * 1024 * 1024 * 1024 //2MB max file(s) size
+        fileSize: 10 * 1024 * 1024 * 1024 //10MB max file(s) size
     },
 }));
 
@@ -39,7 +48,7 @@ app.post('/upload-music', async (req, res) => {
             let music = req.files.music;
             
             //Use the mv() method to place the file in upload directory (i.e. "uploads")
-            music.mv('./public/uploads/' + music.name);
+            music.mv(path.join(uploadFolder, music.name));
 
             //send response
             res.send({
@@ -57,11 +66,34 @@ app.post('/upload-music', async (req, res) => {
     }
 });
 
+app.get('/compare-files', async (req, res) => {
+
+    const source = req.query.file ? path.join(uploadFolder, req.query.file) : '';
+
+    // Files
+    const mastersRoot = path.join(__dirname, 'masters');
+
+    let masters = [];
+    for await (const file of fs.readdirSync(mastersRoot)) {
+        masters.push(await compare({
+            source,
+            dest: path.join(mastersRoot, file),
+        }));
+    }
+
+    res.send({
+        status: true,
+        message: 'Compared files',
+        data: {
+            files: masters,
+        }
+    });
+});
+
 // view engine and routing setup
-const indexRouter = require('./routes/index');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.use('/', indexRouter);
+//app.use('/', indexRouter);
 
 //make uploads directory static
 app.use(express.static('uploads'));

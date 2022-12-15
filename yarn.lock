@@ -64,6 +64,16 @@ asap@~1.0.0:
   resolved "https://registry.yarnpkg.com/asap/-/asap-1.0.0.tgz#b2a45da5fdfa20b0496fc3768cc27c12fa916a7d"
   integrity sha512-Ej9qjcXY+8Tuy1cNqiwNMwFRXOy9UwgTeMA8LxreodygIPV48lx8PU1ecFxb5ZeU1DpMKxiq6vGLTxcitWZPbA==
 
+audio-compare@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/audio-compare/-/audio-compare-1.0.1.tgz#d04aa353d884044a76a6cf7e639eb438a3e45bb3"
+  integrity sha512-B7kOmOpoUEjANAvkaqOdUOqxSs4DdEx3DT6CJ03EQKOys3R8catXpDgz3Oq75roMPIXtFLeEXRi49KXGMf1jTQ==
+  dependencies:
+    big-integer "^1.6.51"
+    dec-to-binary "^1.5.1"
+    jsnumpy "^1.1.10"
+    simple-cli-parser "^1.0.1"
+
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -75,6 +85,16 @@ basic-auth@~2.0.1:
   integrity sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==
   dependencies:
     safe-buffer "5.1.2"
+
+big-integer@^1.6.51:
+  version "1.6.51"
+  resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.51.tgz#0df92a5d9880560d3ff2d5fd20245c889d130686"
+  integrity sha512-GPEid2Y9QU1Exl1rpO9B2IPJGHPSupF5GnVIP0blYvNOMer2bTvSWs1jGOUg04hTmu67nmLsQ9TBo1puaotBHg==
+
+bignumber.js@^9.0.1:
+  version "9.1.1"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.1.1.tgz#c4df7dc496bd849d4c9464344c1aa74228b4dac6"
+  integrity sha512-pHm4LsMJ6lzgNGVfZHjMoO8sdoRhOzOH4MLmY65Jg70bpxCKu5iOHNJyfF6OyvYw7t8Fpf35RuzUyqnQsj8Vig==
 
 binary-extensions@^2.0.0:
   version "2.2.0"
@@ -269,6 +289,13 @@ debug@^3.2.7:
   integrity sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==
   dependencies:
     ms "^2.1.1"
+
+dec-to-binary@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/dec-to-binary/-/dec-to-binary-1.5.1.tgz#b066cbf1684c423abf8252f00a6454f08e223e75"
+  integrity sha512-Jb5unAhR/ENFmw1JMxmkfgG+OFNdsGUBv/ecp/x+ZUUctRC0TtY4kY+EeWVA0XvUci7xFbYu7zVsUgr2PFT/dA==
+  dependencies:
+    bignumber.js "^9.0.1"
 
 decamelize@^1.0.0:
   version "1.2.0"
@@ -515,6 +542,13 @@ jade@^1.11.0:
     void-elements "~2.0.1"
     with "~4.0.0"
 
+jsnumpy@^1.1.10:
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/jsnumpy/-/jsnumpy-1.1.10.tgz#2de04d6966d8f0aa431ae99fc3fdf20b371498eb"
+  integrity sha512-wORQl65QpcMNc7tutjuCwQXEIgq4loVzKYep5bM9S4hs+lu1eZukwN3Fj2i36oKENWnZe0WkuX+kgUhc/5gjMA==
+  dependencies:
+    matrix_deep_clone "^1.0.2"
+
 jstransformer@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/jstransformer/-/jstransformer-0.0.2.tgz#7aae29a903d196cfa0973d885d3e47947ecd76ab"
@@ -544,6 +578,11 @@ longest@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/longest/-/longest-1.0.1.tgz#30a0b2da38f73770e8294a0d22e6625ed77d0097"
   integrity sha512-k+yt5n3l48JU4k8ftnKG6V7u32wyH2NfKzeMto9F/QRE0amxy/LayxwlvjjkZEIzqR+19IrtFO8p5kB9QaYUFg==
+
+matrix_deep_clone@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/matrix_deep_clone/-/matrix_deep_clone-1.0.2.tgz#d92d1a4c9a22812be7fad76affdf6dbbb4231fc4"
+  integrity sha512-Bzx+jonbm/H5KjpCpbxfpAEmx29p86aAotHt5yMXhbTpHZXVrD+rF+6LGutMH1wDlHmlB/4/sqT9yggnLUG5uA==
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -836,6 +875,11 @@ side-channel@^1.0.4:
     call-bind "^1.0.0"
     get-intrinsic "^1.0.2"
     object-inspect "^1.9.0"
+
+simple-cli-parser@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/simple-cli-parser/-/simple-cli-parser-1.0.1.tgz#b6188a9b79ba9f7b66cf128f079bd015d5522c4c"
+  integrity sha512-24VjwhL9g/xWHF4iPSteZAyTPec8xp3QydVbhRB2/1BLic4j0Hy7Ndf258eEfJUmvC3EGUAHC4oLQZGUK6qBZA==
 
 simple-update-notifier@^1.0.7:
   version "1.1.0"

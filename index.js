@@ -79,31 +79,38 @@ app.get('/compare-files', async (req, res) => {
     let masters = [];
     for await (const file of fs.readdirSync(mastersRoot)) {
 
-        let result = await compare({
-            source,
-            dest: path.join(mastersRoot, file),
-        });
+        if (path.extname(file) === '.wav'){
 
-        switch (file) {
-            case 'law.wav':
-                result.title = 'Deep Purple - Smoke On The Water';
-                result.uuid = '12bd766f-dd62-4d50-87b2-da2f9753e4f5';
-                break;
-            case 'smellsliketeenspirit.wav':
-                result.title = 'Nirvana - Smells Like Teen Spirit';
-                result.uuid = 'd1cf3051-69fd-4976-afaf-237b67777b9a';
-                break;
-            case 'test.wav':
-                result.title = 'The Kinks - You Really Got Me';
-                result.uuid = '8966a2ac-1a12-403f-bf88-5798fc3d5016';
-                break;
-            case 'twinkle.wav':
-                result.title = 'Queen - Killer Queen';
-                result.uuid = 'ca276436-962e-4ce0-b4b9-33589d359f1c';
-                break;
+            let result = await compare({
+                source,
+                dest: path.join(mastersRoot, file),
+                options: {
+                    span: 70 // if exception is thrown reduce this
+                }
+            });
+
+            switch (file) {
+                case 'smokeonthewater.wav':
+                    result.title = 'Deep Purple - Smoke On The Water';
+                    result.uuid = '12bd766f-dd62-4d50-87b2-da2f9753e4f5';
+                    break;
+                case 'smellsliketeenspirit.wav':
+                    result.title = 'Nirvana - Smells Like Teen Spirit';
+                    result.uuid = 'd1cf3051-69fd-4976-afaf-237b67777b9a';
+                    break;
+                case 'youreallygotme.wav':
+                    result.title = 'The Kinks - You Really Got Me';
+                    result.uuid = '8966a2ac-1a12-403f-bf88-5798fc3d5016';
+                    break;
+                case 'killerqueen.wav':
+                    result.title = 'Queen - Killer Queen';
+                    result.uuid = 'ca276436-962e-4ce0-b4b9-33589d359f1c';
+                    break;
+            }
+
+            masters.push(result);
+
         }
-
-        masters.push(result);
     }
 
     res.send({
